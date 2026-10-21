@@ -44,16 +44,16 @@
   .cart:hover{background:var(--btn-d);}
   .cart:active{transform:scale(.995);}
   .cart:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
-  /* строка «Цвет» — та же 4-колоночная сетка, что и плашки ниже: подпись над 1-й, свотчи над 2–4 */
-  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:center;margin:22px 0 0;}
-  .lab{grid-column:1;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;line-height:1.25;}
-  .opts.sws{grid-column:2 / 5;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;}
+  /* блок «Цвет» — как у грядок АСТРА: подпись отдельной строкой над свотчами, свотчи по левому краю;
+     ритм: до подписи 14px, подпись→свотчи 8px (те же .lab / .opts.sws, что в calculators/v1-astra) */
+  .lab{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px;font-weight:600;}
+  .opts.sws{display:flex;flex-wrap:wrap;gap:10px;}
   .sw{width:32px;height:32px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0;transition:box-shadow .12s;}
   .sw.on{box-shadow:0 0 0 2px var(--green);}
   /* Страховка от авто-ссылок телефонов на мобильных (число → синяя tel-ссылка). */
   a[href^="tel:"]{color:inherit !important;-webkit-text-fill-color:inherit !important;text-decoration:none !important;pointer-events:none;}
   /* ---- Плашки габаритов ---- */
-  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 12px;}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 12px;}
   .m{background:var(--surf);border-radius:10px;padding:10px 8px;text-align:center;}
   .m .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
   .m .v{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--ink);margin-top:4px;font-variant-numeric:tabular-nums;white-space:nowrap;}
@@ -75,10 +75,6 @@
   @media(max-width:900px){
     .card{grid-template-columns:1fr;gap:18px;align-items:start;}
     .stage{aspect-ratio:1/1;max-height:62vh;}
-    /* строка «Цвет» — подпись над свотчами */
-    .row{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:20px 0 0;}
-    .lab{grid-column:auto;}
-    .opts.sws{grid-column:auto;}
     .price-val{font-size:26px;}
     .stage img{padding:10px 46px;}
     .nav{width:34px;height:34px;} .nav.prev{left:6px;} .nav.next{right:6px;}
@@ -106,10 +102,8 @@
   <div class="info">
     <div class="price-val" id="pVal">—</div>
     <div class="price-break" id="pBreak">—</div>
-    <div class="row">
-      <span class="lab">Цвет</span>
-      <div class="opts sws" id="sw"></div>
-    </div>
+    <div class="lab">Цвет</div>
+    <div class="opts sws" id="sw"></div>
     <div class="metrics">
       <div class="m"><div class="k">Длина, см</div><div class="v" id="mL">—</div></div>
       <div class="m"><div class="k">Ширина, см</div><div class="v" id="mW">—</div></div>
